@@ -36,3 +36,9 @@ This application contains the following knowledge:
 - Clase Abstracta: Es una especie de super class, que no puede ser instanciada,pero sus metódos si.
 
 ### The application looks like this:
+![WhatsApp Image 2025-06-23 at 12 42 08](https://github.com/user-attachments/assets/f25a0f16-df08-4d7c-931c-dd6315a56066)
+![WhatsApp Image 2025-06-23 at 12 42 08 (2)](https://github.com/user-attachments/assets/5e088e70-e377-4e21-92ae-cc6beb9640dd)
+![WhatsApp Image 2025-06-23 at 12 42 08 (1)](https://github.com/user-attachments/assets/a93a74a6-5299-48c5-8949-b25371b1f8ae)
+
+
+
