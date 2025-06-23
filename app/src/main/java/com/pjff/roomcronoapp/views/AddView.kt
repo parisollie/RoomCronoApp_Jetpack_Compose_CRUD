@@ -40,8 +40,9 @@ import com.pjff.roomcronoapp.viewModels.CronosViewModel
 @Composable
 fun AddView(
     navController: NavController,
-    //paso 7.5, le pasamos el cronometroVM: CronometroViewModel
+    // Paso 7.5, le pasamos el cronometroVM: CronometroViewModel
     cronometroVM: CronometroViewModel,
+    // Paso 8.11
     cronosVM: CronosViewModel) {
     Scaffold(
         topBar = {
@@ -66,6 +67,7 @@ fun AddView(
             navController,
             // Paso 7.6
             cronometroVM,
+            // Paso 8.12
             cronosVM)
     }
 }
@@ -76,6 +78,7 @@ fun ContentAddView(
     navController: NavController,
     //Paso 7.7
     cronometroVM: CronometroViewModel,
+    // Paso 8.13
     cronosVM: CronosViewModel
 ) {
     //paso 7.9, traemos los datos en el estado
@@ -113,7 +116,7 @@ fun ContentAddView(
             ) {
                 cronometroVM.iniciar()
             }
-            // Pausar
+            //Paso 8.4,iconos
             CircleButton(
                 icon = painterResource(id = R.drawable.pausa),
                 enabled = state.cronometroActivo
@@ -139,6 +142,7 @@ fun ContentAddView(
 
         }//Row
 
+        //V-130, Paso 8.5
         if (state.showTextField) {
             MainTextField(
                 value = state.title,
@@ -147,13 +151,14 @@ fun ContentAddView(
             )
 
             Button(onClick = {
+                //Paso 8.14
                 cronosVM.addCrono(
                     Cronos(
                         title = state.title,
                         crono = cronometroVM.tiempo
                     )
                 )
-
+                //Para que se regrese al home
                 navController.popBackStack()
 
             }) {

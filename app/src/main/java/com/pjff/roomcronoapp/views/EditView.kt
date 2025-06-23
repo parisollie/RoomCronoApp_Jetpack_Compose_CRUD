@@ -35,12 +35,14 @@ import com.pjff.roomcronoapp.model.Cronos
 import com.pjff.roomcronoapp.viewModels.CronometroViewModel
 import com.pjff.roomcronoapp.viewModels.CronosViewModel
 
+//V-134, paso 11.0 Editar View
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EditView(
     navController: NavController,
     cronometroVM: CronometroViewModel,
     cronosVM: CronosViewModel,
+    //Paso 11.3
     id: Long
 ) {
     Scaffold(
@@ -58,7 +60,14 @@ fun EditView(
             )
         }
     ) { it ->
-        ContentEditView(it, navController, cronometroVM, cronosVM, id)
+        ContentEditView(
+            it,
+            navController,
+            cronometroVM,
+            cronosVM,
+            //Paso 11.4
+            id
+        )
     }
 }
 
@@ -77,6 +86,7 @@ fun ContentEditView(
         cronometroVM.cronos()
     }
 
+    //Paso 12.2
     LaunchedEffect(Unit){
         cronometroVM.getCronoById(id)
     }
@@ -88,13 +98,12 @@ fun ContentEditView(
             .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
+        //Paso 11.6
         Text(
             text = formatTiempo(cronometroVM.tiempo),
             fontSize = 50.sp,
             fontWeight = FontWeight.Bold
         )
-
 
         Row(
             horizontalArrangement = Arrangement.Center,
@@ -122,6 +131,7 @@ fun ContentEditView(
             )
 
             Button(onClick = {
+                //Paso 12.3
                 cronosVM.updateCrono(
                     Cronos(
                         id = id,
@@ -136,12 +146,11 @@ fun ContentEditView(
                 Text(text = "Editar")
             }
 
+        //Paso 12.4
         DisposableEffect(Unit){
             onDispose {
                 cronometroVM.detener()
             }
         }
-
-
     }
 }

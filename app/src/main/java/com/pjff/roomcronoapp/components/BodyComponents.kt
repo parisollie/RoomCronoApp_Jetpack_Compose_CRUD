@@ -52,6 +52,7 @@ fun formatTiempo(tiempo: Long): String {
     return String.format("%02d:%02d:%02d", horas, minutos, segundos)
 }
 
+//V-132, paso 9.4, card mostrar lo del cronometro
 @Composable
 fun CronCard(titulo: String, crono: String, onClick: () -> Unit) {
     Box(
@@ -68,7 +69,6 @@ fun CronCard(titulo: String, crono: String, onClick: () -> Unit) {
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold
             )
-
             Row {
                 Icon(
                     painter = painterResource(R.drawable.time),
@@ -83,19 +83,6 @@ fun CronCard(titulo: String, crono: String, onClick: () -> Unit) {
                     .height(1.dp),
                 color = MaterialTheme.colorScheme.primary
             )
-
         }//Column
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-

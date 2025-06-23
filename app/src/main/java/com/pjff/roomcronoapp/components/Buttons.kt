@@ -43,6 +43,7 @@ fun MainIconButton(icon: ImageVector, onClick: () -> Unit) {
 //V-128,paso 8.0, creamos el botón circular.
 @Composable
 fun CircleButton(
+    //V-129, Paso 8.2 , lo cambia a painter
     icon: Painter,
     enabled: Boolean = false,
     onClick: () -> Unit
@@ -55,6 +56,7 @@ fun CircleButton(
         modifier = Modifier.padding(horizontal = 15.dp)
     ) {
         Icon(
+            //Paso 8.3, lo cambia a painter
             painter = icon,
             contentDescription = "",
             modifier = Modifier.size(24.dp)

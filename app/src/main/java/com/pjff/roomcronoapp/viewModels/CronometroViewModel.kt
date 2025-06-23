@@ -15,6 +15,8 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/*V-135,Paso 12.0 agremos el HiltViewModel
+El inject y el constructor para inyectarlo*/
 @HiltViewModel
 //Paso 6.3, para manera la logica del cronómetro
 class CronometroViewModel @Inject constructor(private val repository: CronosRepository) : ViewModel() {
@@ -28,9 +30,11 @@ class CronometroViewModel @Inject constructor(private val repository: CronosRepo
     var tiempo by mutableStateOf(0L)
         private set
 
+    //Paso 12.1
     fun getCronoById(id:Long){
         viewModelScope.launch(Dispatchers.IO) {
             repository.getCronoById(id).collect { item ->
+                //V-136,Paso 12.5
                 if(item != null){
                     tiempo = item.crono
                     state = state.copy(title = item.title)

@@ -24,6 +24,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         //V-127,Paso 7.1, inicializamos los viewModels
         val cronometroVM : CronometroViewModel by viewModels()
+        //Paso 8.6 ponemos el cronosViewModel
         val cronosVM : CronosViewModel by viewModels()
         setContent {
             RoomCronoAppTheme {
@@ -36,6 +37,7 @@ class MainActivity : ComponentActivity() {
                     NavManager(
                         //Paso 7.2, ponemos el cronometroVM y el cronosVM
                         cronometroVM,
+                        //Paso 8.7, ponemos el cronosVM
                         cronosVM)
                 }
             }
