@@ -17,13 +17,12 @@ import com.pjff.roomcronoapp.viewModels.CronometroViewModel
 import com.pjff.roomcronoapp.viewModels.CronosViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
-
-//Vid 118 ,ponemos ,@AndroidEntryPoint que usara lo de dagget
+//Paso 3.3,ponemos ,@AndroidEntryPoint que usara lo de dagger Hilt
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //Vid 126
+        //V-127,Paso 7.1, inicializamos los viewModels
         val cronometroVM : CronometroViewModel by viewModels()
         val cronosVM : CronosViewModel by viewModels()
         setContent {
@@ -33,8 +32,11 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    //Vid 121
-                    NavManager(cronometroVM, cronosVM)
+                    //Paso 4.1, ponemos la navegacion
+                    NavManager(
+                        //Paso 7.2, ponemos el cronometroVM y el cronosVM
+                        cronometroVM,
+                        cronosVM)
                 }
             }
         }

@@ -22,8 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.pjff.roomcronoapp.R
 
-
-//Vid 121
+// Paso 5.4
 @Composable
 fun MainTitle(title: String) {
     Text(text = title, color = Color.White, fontWeight = FontWeight.Bold)
@@ -44,7 +43,7 @@ fun MainTextField(value: String, onValueChange: (String) -> Unit, label: String)
     )
 }
 
-//Vid 125,calcúlos del cronómetro
+//V-126,Paso 7.0 calcúlos del cronómetro
 @Composable
 fun formatTiempo(tiempo: Long): String {
     val segundos = (tiempo / 1000) % 60
@@ -85,7 +84,7 @@ fun CronCard(titulo: String, crono: String, onClick: () -> Unit) {
                 color = MaterialTheme.colorScheme.primary
             )
 
-        }
+        }//Column
     }
 }
 

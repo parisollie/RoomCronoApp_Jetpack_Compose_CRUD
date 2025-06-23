@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-//Vid 120 ,aqui estamos haciendo una cadena de inyeccion CronosRepository
+//V-121,Paso 3.5 aqui estamos haciendo una cadena de inyeccion CronosRepository
 @HiltViewModel
 class CronosViewModel @Inject constructor(private val repository: CronosRepository): ViewModel() {
 
@@ -22,9 +22,11 @@ class CronosViewModel @Inject constructor(private val repository: CronosReposito
 
     //Funcion para llamar todo
     init {
+        //mandar a las bases de datos siempre con IO
         viewModelScope.launch(Dispatchers.IO) {
             repository.getAllCronos().collect { item ->
                 if (item.isNullOrEmpty()){
+                    //para que nos ponga la lista vacía nuevamente
                     _cronosList.value = emptyList()
                 }else{
                     //Si tenemos algun registro.
@@ -34,7 +36,7 @@ class CronosViewModel @Inject constructor(private val repository: CronosReposito
         }
     }
 
-    //Funciones para llamar los metodos
+    //Funciones para llamar los metódos
     fun addCrono(crono: Cronos) = viewModelScope.launch { repository.addCrono(crono) }
     fun updateCrono(crono: Cronos) = viewModelScope.launch { repository.updateCrono(crono) }
     fun deleteCrono(crono: Cronos) = viewModelScope.launch { repository.deleteCrono(crono) }

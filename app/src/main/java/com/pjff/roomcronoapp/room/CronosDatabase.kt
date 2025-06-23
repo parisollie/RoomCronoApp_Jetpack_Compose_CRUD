@@ -4,17 +4,20 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.pjff.roomcronoapp.model.Cronos
 
-/*Vid 117,Inyecccion de dependencias,tratamos de administrar las dependencias
-con los metoódos o clases para itegrarlas a otras clases, sin nececidad de hacer otra instancia
-y las pasamos como parámetros */
+/*V-117,Paso 2.2
 
-/*Esto será una clase abstracta ,es una especie de super class, que no ser instanciada,pero
-sus metódos si*/
+Inyecccion de dependencias -> Tratamos de administrar las dependencias
+con los metódos o clases para integrarlas a otras clases, sin nececidad de hacer
+otra instancia dentro de una de calse y la pasamos como parámetros.  */
 
-//La version de nuestra base de datos siempre será la 1
+/*Esto será una clase abstracta ,es una especie de super class, que no puede ser
+instanciada,pero sus metódos si*/
+
+/*Le ponemos nuestra entidad ( la unica que tenemos Cronos)
+La versión de nuestra base de datos siempre será la 1 al principio */
 @Database(entities = [Cronos::class], version = 1, exportSchema = false)
 abstract class CronosDatabase: RoomDatabase() {
-    //apunta al DAO que acabamos de creer.
+    //apunta al DAO que acabamos de crear y retorna un CronosDatabaseDao.
     abstract fun cronosDao() : CronosDatabaseDao
 }
 

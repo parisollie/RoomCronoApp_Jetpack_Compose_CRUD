@@ -35,20 +35,25 @@ import com.pjff.roomcronoapp.model.Cronos
 import com.pjff.roomcronoapp.viewModels.CronometroViewModel
 import com.pjff.roomcronoapp.viewModels.CronosViewModel
 
-//Vid 123
+//V-124, paso 6.0
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddView(navController: NavController, cronometroVM: CronometroViewModel, cronosVM: CronosViewModel) {
+fun AddView(
+    navController: NavController,
+    //paso 7.5, le pasamos el cronometroVM: CronometroViewModel
+    cronometroVM: CronometroViewModel,
+    cronosVM: CronosViewModel) {
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
-                //Vid 121
+
                 title = { MainTitle(title = "ADD CRONO") },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primary
                 ),
-                //Vid 123
+                //Paso 6.1
                 navigationIcon = {
+                    // Mandamos a llamar a MainIconButton y le pasamos el icono
                     MainIconButton(icon = Icons.Default.ArrowBack) {
                         navController.popBackStack()
                     }
@@ -56,7 +61,12 @@ fun AddView(navController: NavController, cronometroVM: CronometroViewModel, cro
             )
         }
     ) { it ->
-        ContentAddView(it, navController, cronometroVM, cronosVM)
+        ContentAddView(
+            it,
+            navController,
+            // Paso 7.6
+            cronometroVM,
+            cronosVM)
     }
 }
 
@@ -64,43 +74,46 @@ fun AddView(navController: NavController, cronometroVM: CronometroViewModel, cro
 fun ContentAddView(
     it: PaddingValues,
     navController: NavController,
+    //Paso 7.7
     cronometroVM: CronometroViewModel,
     cronosVM: CronosViewModel
 ) {
-
+    //paso 7.9, traemos los datos en el estado
     val state = cronometroVM.state
-
     //Funcion para ejecutar el view Model 
     LaunchedEffect(state.cronometroActivo) {
+        //Traemos la función cronos que es la funcion para ejecutar el cronometro.
         cronometroVM.cronos()
     }
 
     Column(
+        //Paso 7.8
         modifier = Modifier
             .padding(it)
             .padding(top = 30.dp)
             .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
+        //Paso 7.10
         Text(
             text = formatTiempo(cronometroVM.tiempo),
             fontSize = 50.sp,
             fontWeight = FontWeight.Bold
         )
 
+        //Paso 8.1
         Row(
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier.padding(vertical = 16.dp)
         ) {
-            // iniciar
+            // Iniciar
             CircleButton(
                 icon = painterResource(id = R.drawable.play),
                 enabled = !state.cronometroActivo
             ) {
                 cronometroVM.iniciar()
             }
-            // pausar
+            // Pausar
             CircleButton(
                 icon = painterResource(id = R.drawable.pausa),
                 enabled = state.cronometroActivo
@@ -108,7 +121,7 @@ fun ContentAddView(
                 cronometroVM.pausar()
             }
 
-            // detener
+            // Detener
             CircleButton(
                 icon = painterResource(id = R.drawable.stop),
                 enabled = !state.cronometroActivo
@@ -116,7 +129,7 @@ fun ContentAddView(
                 cronometroVM.detener()
             }
 
-            // mostrar guardar
+            // Mostrar guardar
             CircleButton(
                 icon = painterResource(id = R.drawable.save),
                 enabled = state.showSaveButton
@@ -124,7 +137,7 @@ fun ContentAddView(
                 cronometroVM.showTextField()
             }
 
-        }
+        }//Row
 
         if (state.showTextField) {
             MainTextField(
@@ -151,7 +164,6 @@ fun ContentAddView(
                     cronometroVM.detener()
                 }
             }
-
-        }
+        }//If
     }
 }

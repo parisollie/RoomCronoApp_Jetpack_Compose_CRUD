@@ -12,9 +12,9 @@ import com.pjff.roomcronoapp.views.AddView
 import com.pjff.roomcronoapp.views.EditView
 import com.pjff.roomcronoapp.views.HomeView
 
-//Vid 121
+//V-121 Paso 4.0, navegación
 @Composable
-//Vid 126,agregamos cronometroVM: CronometroViewModel
+//Paso 7.3,agregamos cronometroVM: CronometroViewModel
 fun NavManager(cronometroVM: CronometroViewModel, cronosVM: CronosViewModel){
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "Home"){
@@ -22,8 +22,12 @@ fun NavManager(cronometroVM: CronometroViewModel, cronosVM: CronosViewModel){
             HomeView(navController, cronosVM)
         }
         composable("AddView"){
-            //Vid 126,agregamos cronometroVM
-            AddView(navController, cronometroVM, cronosVM)
+
+            AddView(
+                navController,
+                //Paso 7.4,agregamos cronometroVM
+                cronometroVM,
+                cronosVM)
         }
         composable("EditView/{id}", arguments = listOf(
             navArgument("id") { type = NavType.LongType }

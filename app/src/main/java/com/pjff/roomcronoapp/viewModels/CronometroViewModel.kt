@@ -12,20 +12,19 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-//Vid 123
+//Paso 6.3, para manera la logica del cronómetro
 class CronometroViewModel @Inject constructor(private val repository: CronosRepository) : ViewModel() {
 
     var state by mutableStateOf(CronoState())
         private set
-
+    //Job nos permite controlar la corrutina ,para la reproduccion
     var cronoJob by mutableStateOf<Job?>(null)
         private set
-   //0L representa un numero largo
+    //0L representa un numero largo
     var tiempo by mutableStateOf(0L)
         private set
 
@@ -42,27 +41,28 @@ class CronometroViewModel @Inject constructor(private val repository: CronosRepo
         }
     }
 
-    //Vid 123
     fun onValue(value:String){
         state = state.copy(title = value)
     }
 
-    //Vid 124, metódos
+    //V-125, Paso 6.4 Funciones del cronometro
     fun iniciar(){
         state = state.copy(
             cronometroActivo = true
         )
     }
-    //Vid 124,
+
     fun pausar(){
         state = state.copy(
             cronometroActivo = false,
             showSaveButton = true
         )
     }
-    //Vid 124,
+
     fun detener(){
+        //Para que se cancele el proceso
         cronoJob?.cancel()
+        // Para que el cronometro se iguale a cero
         tiempo = 0
 
         state = state.copy(
@@ -73,18 +73,18 @@ class CronometroViewModel @Inject constructor(private val repository: CronosRepo
         )
     }
 
-    //Vid 124,
     fun showTextField(){
         state = state.copy(
             showTextField = true
         )
     }
 
-
-    //Vid 124,
+    //Función principal
     fun cronos(){
+        //Si esta activicio inicia la secuencia
         if(state.cronometroActivo){
             cronoJob?.cancel()
+            //se ejecuta en el hilo principal
             cronoJob = viewModelScope.launch {
                 while (true){
                     delay(1000)

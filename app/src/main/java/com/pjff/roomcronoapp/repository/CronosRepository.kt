@@ -8,10 +8,13 @@ import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
-
+//V-120,Paso 3.4 creamos el repositorio y hacemos el usao de inyeccion de dependencias.
 class CronosRepository @Inject constructor(private val cronosDatabaseDao: CronosDatabaseDao) {
 
-    //Vid 119, metódos que se usaran en el view MOdel y accedemos a los metódos de la interfaz
+    /*
+      Metódos que se usaran en el viewModel
+      y accedemos a los metódos de la interfaz
+    */
     suspend fun addCrono(crono: Cronos)     = cronosDatabaseDao.insert(crono)
     suspend fun updateCrono(crono: Cronos)  = cronosDatabaseDao.update(crono)
     suspend fun deleteCrono(crono: Cronos)  = cronosDatabaseDao.delete(crono)

@@ -18,7 +18,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 
-//Vid 122,
+//V-123,Paso 5.0 , ponemos nuestras funciones de botones
 @Composable
 fun FloatButton(onClick: () -> Unit) {
     FloatingActionButton(
@@ -40,6 +40,7 @@ fun MainIconButton(icon: ImageVector, onClick: () -> Unit) {
     }
 }
 
+//V-128,paso 8.0, creamos el botón circular.
 @Composable
 fun CircleButton(
     icon: Painter,

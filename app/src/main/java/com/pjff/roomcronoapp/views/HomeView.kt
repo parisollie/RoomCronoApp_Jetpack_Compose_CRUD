@@ -7,15 +7,12 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material3.Button
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -30,27 +27,30 @@ import com.pjff.roomcronoapp.components.formatTiempo
 import com.pjff.roomcronoapp.viewModels.CronosViewModel
 import me.saket.swipe.SwipeAction
 import me.saket.swipe.SwipeableActionsBox
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-//Vid 121
 fun HomeView(navController: NavController, cronosVM: CronosViewModel){
-    //Vid 121
+    //Paso 5.1
     Scaffold(
         topBar = {
+            //Paso 5.3
             CenterAlignedTopAppBar(
-                //Importamos el main tittle
+                //Paso 5.5 Importamos el mainTitle
                 title = { MainTitle(title = "CRONO APP") },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primary
                 )
             )
         },
+        //Paso 5.6
         floatingActionButton = {
             FloatButton {
                 navController.navigate("AddView")
             }
         }
     ) {
+        //paso 5.2,ponemos el contentHomeView con el it y el nav
         ContentHomeView(it, navController, cronosVM)
     }
 }
