@@ -1,4 +1,4 @@
-#  RoomCronoApp Android JetpackCompose: Bloque 13 JM
+#  RoomCronoApp Android Jetpack Compose: Bloque 13 JM
 
 A new Android project Jetpack Compose.
 
@@ -16,7 +16,7 @@ This application contains the following knowledge:
 
 ## Teoria
 
-- Room :  Room es una capa de abstracción sobre SQLite que forma parte de las Android Jetpack Components. Facilita el trabajo con bases de datos de manera más sencilla, eficiente
+- Room :  Es una capa de abstracción sobre SQLite que forma parte de las Android Jetpack Components. Facilita el trabajo con bases de datos de manera más sencilla, eficiente
   y con menos código repetitivo en comparación con el uso directo de SQLite.
 
 - Características principales de Room:
